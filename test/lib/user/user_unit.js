@@ -20,7 +20,6 @@ describe('User test', function () {
         job: 'developpeur',
         society: 'Together SAS',
         workspace: [],
-
       }
     }).then(function(user) {
       should.exists(user);

@@ -1,6 +1,6 @@
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var UserModel = require('../models').user;
-var config = require('../../configuration');
+var config = require('../../../configuration');
 
 
 // --------------------------------------------------------------------------------
@@ -29,7 +29,7 @@ module.exports = function (passport) {
                             return done(null, user);
                         });
                     } else {
-                        var newUser = new User({
+                        var newUser = new UserModel({
                             name: profile.displayName,
                             googleToken: token,
                             googleId: profile.id,
