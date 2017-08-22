@@ -6,7 +6,7 @@
 
 var mongoose = require('mongoose');
 
-var conStr = "mongodb://alex:alexfoot31@ds054118.mlab.com:54118/semantic_bus";
+var conStr = "mongodb://alex:alexfoot31@ds131362-a0.mlab.com:31362,ds131362-a1.mlab.com:31362/semantic_bus_prod?replicaSet=rs-ds131362";
 
 
 mongoose.connect(conStr);
