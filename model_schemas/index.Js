@@ -7,6 +7,7 @@ var workspaceComponent = require('./workspace_component_schema')
 var transaction  = require('./transaction_schema')
 var mangoPayAuthSchema = require('./mangopay_auth_schema')
 var cache  = require('./cache_schema')
+
 // --------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------
