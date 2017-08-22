@@ -1,7 +1,7 @@
 var should = require('should');
-var workspace = require('../../../lib').workspace;
-var workspace_model = require('../../../models').workspace;
-var workspaceComponentModel = require('../../../models').workspaceComponent
+var workspace = require('../../../lib/workspace/workspace_lib');
+var workspace_model = require('../../../models/workspace_model');
+var workspaceComponentModel = require('../../../models/workspace_component_model')
 
 
 // --------------------------------------------------------------------------------

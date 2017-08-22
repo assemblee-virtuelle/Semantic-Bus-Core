@@ -1,6 +1,6 @@
 var should = require('should');
-var inscription = require('../../../lib').inscription;
-var User = require('../../../models').user;
+var inscription = require('../../../lib/inscription_lib');
+var User = require('../../../models/user_lib');
 
 
 // --------------------------------------------------------------------------------
