@@ -1,5 +1,4 @@
 'use strict';
-console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 var mongoose = require('mongoose');
 var workspaceComponent = require('./workspace_component_schema')
 
