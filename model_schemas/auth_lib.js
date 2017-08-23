@@ -7,7 +7,7 @@ var moment = require('moment');
 var bcrypt = require('bcryptjs');
 var passport = require('passport');
 var userModel = require('../models').user;
-var authenticationModel = require('../models/auth_model');
+var authenticationModel = require('../models').authentication;
 
 // --------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------

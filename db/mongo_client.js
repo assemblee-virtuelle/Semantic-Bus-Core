@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 var conStr = config.mlabDB
 
 mongoose.connect(conStr);
-console.log("new connection")
+
 var db = mongoose.connection;
 
 // CONNECTION EVENTS
