@@ -1,7 +1,7 @@
 'use strict';
 console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 var mongoose = require('mongoose');
-// var workspaceComponent = require('./workspace_component_schema')
+var workspaceComponent = require('./workspace_component_schema')
 
 // --------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------
@@ -27,7 +27,6 @@ var WorkspaceSchema = mongoose.Schema({
     }
 });
 
-console.log('WorkspaceSchema', WorkspaceSchema)
 
 // --------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------
