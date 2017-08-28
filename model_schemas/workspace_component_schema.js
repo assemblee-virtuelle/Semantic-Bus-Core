@@ -21,7 +21,10 @@ var WorkspaceComponentSchema = mongoose.Schema({
         ref: "workspaceComponent"
     }],
     workspaceId: String,
-    specificData: Object
+    specificData: {
+        type: Object,
+        default: {}
+    }
 })
 
 
