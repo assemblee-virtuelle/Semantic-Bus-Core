@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 // --------------------------------------------------------------------------------
 
 var CacheSchema = mongoose.Schema({
-  data: Array,
+  data: Object,
   dates: {
     created_at: Date
   }
