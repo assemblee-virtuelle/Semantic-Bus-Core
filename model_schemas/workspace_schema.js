@@ -23,7 +23,11 @@ var WorkspaceSchema = mongoose.Schema({
     average_consumption: {
         type: Number,
         default: 0
-    }
+    },
+    users: [{
+        email: String,
+        role: String,
+    }]
 });
 
 
