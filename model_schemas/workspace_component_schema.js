@@ -12,12 +12,15 @@ var WorkspaceComponentSchema = mongoose.Schema({
     name:String,
     description: String,
     editor: String,
+    graphIcon: String,
+    graphPositionX:Number,
+    graphPositionY:Number,
     connectionsAfter: [{
-        type: mongoose.Schema.Types.ObjectId, 
+        type: mongoose.Schema.Types.ObjectId,
         ref: "workspaceComponent"
     }],
     connectionsBefore: [{
-        type: mongoose.Schema.Types.ObjectId, 
+        type: mongoose.Schema.Types.ObjectId,
         ref: "workspaceComponent"
     }],
     workspaceId: String,
