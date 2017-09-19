@@ -27,7 +27,22 @@ var WorkspaceComponentSchema = mongoose.Schema({
     specificData: {
         type: Object,
         default: {}
-    }
+    },
+    consumption_history: [{
+        traitement_id: Number,
+        dates: {
+          created_at: Date
+        },
+        flow_size: {
+          type: Number,
+          default: 0
+        },
+        price:Number
+    }],
+    pricing: {
+        type: Number,
+        default: 4
+    },
 })
 
 

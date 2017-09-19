@@ -7,27 +7,30 @@ var mongoose = require('mongoose');
 // --------------------------------------------------------------------------------
 
 var WorkspaceSchema = mongoose.Schema({
-    name: String,
-    description: String,
-    components: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "workspaceComponent"
-    }],
+  name: String,
+  description: String,
+  components: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "workspaceComponent"
+  }],
+  dates: {
+    created_at: Date
+  },
+  consumption_history: [{
+    traitement_id: Number,
     dates: {
-        created_at: Date
+      created_at: Date
     },
     flow_size: {
-        type: Number,
-        default: 0
+      type: Number,
+      default: 0
     },
-    average_consumption: {
-        type: Number,
-        default: 0
-    },
-    users: [{
-        email: String,
-        role: String,
-    }]
+    price: Number
+  }],
+  users: [{
+    email: String,
+    role: String,
+  }]
 });
 
 

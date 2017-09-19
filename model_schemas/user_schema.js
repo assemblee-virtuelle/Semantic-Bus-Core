@@ -39,6 +39,10 @@ var UserSchema = mongoose.Schema({
             }],
             user_id: String,
             wallet_id: String
+        },
+        flat_rate: {
+            type: Number,
+            default: 1
         }
     },
     job:{
