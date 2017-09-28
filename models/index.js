@@ -1,5 +1,5 @@
 'use strict';
-console.log(__filename);
+//console.log(__filename);
 var authentication = require('./auth_model');
 var user = require('./user_model');
 var workspace = require('./workspace_model')
