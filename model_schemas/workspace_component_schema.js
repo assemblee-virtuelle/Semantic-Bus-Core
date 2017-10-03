@@ -43,7 +43,7 @@ var WorkspaceComponentSchema = mongoose.Schema({
         type: Number,
         default: 4
     },
-})
+}, { minimize: false })
 
 
 

@@ -31,7 +31,7 @@ var WorkspaceSchema = mongoose.Schema({
     email: String,
     role: String,
   }]
-});
+}, { minimize: false });
 
 
 // --------------------------------------------------------------------------------
