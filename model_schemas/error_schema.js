@@ -14,6 +14,9 @@ var ErrorSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  userId:{
+    type: String
+  },
   stackArray: [{
     type: String,
     required: true
