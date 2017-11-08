@@ -11,7 +11,6 @@ module.exports = {
     this.componentLib.get_all({
       module: 'timer'
     }).then(components => {
-      console.log('ALLO',dedicaded,this.config.timerTarget);
 
       if ((dedicaded && this.config.timerTarget != undefined) || (dedicaded==undefined && this.config.timerTarget == undefined)) {
         console.log(components.length + ' timers');
