@@ -22,18 +22,19 @@ module.exports = {
             console.log(now - (interval * 1000 * 60), lastExec);
             if (lastExec == undefined || (interval != undefined && now - (interval * 1000 * 60) >= lastExec)) {
 
+              c.specificData.last = now;
+              //console.log(c);
+              this.componentLib.update(c);
 
-              if (dedicaded && this.config.timerTarget != undefined) {
-                c.specificData.last = now;
-                //console.log(c);
-                this.componentLib.update(c);
+              if (dedicaded && this.config.timer != undefined) {
+
                 const payload = {
                   exp: this.moment().add(14, 'days').unix(),
                   iat: this.moment().unix(),
                   iss: 'timerScheduler'
                 }
 
-                const token = this.jwt.encode(payload, this.config.timerTarget.secret);
+                const token = this.jwt.encode(payload, this.config.timer.secret);
 
 
 
@@ -43,7 +44,7 @@ module.exports = {
                 });
 
                 const parsedUrl = this.url.parse(this.config.timerTarget.target);
-                //console.log(parsedUrl);
+                console.log('GET',parsedUrl);
                 this.http.get({
                   host: parsedUrl.hostname,
                   port: parsedUrl.port,
