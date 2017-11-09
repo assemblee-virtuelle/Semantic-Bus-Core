@@ -43,7 +43,7 @@ module.exports = {
                   keepAlive: true
                 });
 
-                const parsedUrl = this.url.parse(this.config.timerTarget.target);
+                const parsedUrl = this.url.parse(this.config.timer.target);
                 console.log('GET',parsedUrl);
                 this.http.get({
                   host: parsedUrl.hostname,
@@ -65,7 +65,7 @@ module.exports = {
                   //throw new Error(e)
                 });
 
-              } else if (dedicaded==undefined && this.config.timerTarget == undefined) {
+              } else if (dedicaded==undefined && this.config.timer == undefined) {
                 let engine = require('../../webServices/recursivPullResolvePromise');
                 engine.getNewInstance().resolveComponent(c, 'work').then(() => {
                   console.log('timer done');
