@@ -12,7 +12,7 @@ module.exports = {
       module: 'timer'
     }).then(components => {
 
-      if ((dedicaded && this.config.timerTarget != undefined) || (dedicaded==undefined && this.config.timerTarget == undefined)) {
+      if ((dedicaded && this.config.timer != undefined) || (dedicaded==undefined && this.config.timer == undefined)) {
         console.log(components.length + ' timers');
         components.forEach(c => {
           let now = new Date();
