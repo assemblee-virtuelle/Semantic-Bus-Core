@@ -8,9 +8,17 @@ var mongoose = require('mongoose');
 
 var CacheSchema = mongoose.Schema({
   data: Object,
-  dates: {
-    created_at: Date
-  }
+  date: {
+    type: Date,
+    default: Date.now
+  },
+  history: [{
+    date: {
+      type: Date,
+      default: Date.now
+    },
+    data: Object
+  }],
 });
 
 // --------------------------------------------------------------------------------
