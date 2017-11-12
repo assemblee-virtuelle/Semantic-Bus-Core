@@ -16,6 +16,10 @@ var WorkspaceSchema = mongoose.Schema({
   dates: {
     created_at: Date
   },
+  rowid:{
+    type: Number,
+    default: null
+  },
   consumption_history: [{
     traitement_id: Number,
     dates: {

@@ -18,10 +18,12 @@ module.exports = function (passport) {
                 UserModel.findOne({
                         'googleId': profile.id
                 }, function (err, user) {
+                    console.log("google user passeport", user)
                     if (err)
                         return done(err);
                     if (user) {
                         user.googleToken = token
+                        console.log("google user passeport 2", user)
                         UserModel.findByIdAndUpdate(user._id, user, function (err, res) {
                             if (err) {
                                 throw err;
