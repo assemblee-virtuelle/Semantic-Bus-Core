@@ -13,17 +13,17 @@ module.exports = {
     }).then(components => {
 
       if ((dedicaded && this.config.timer != undefined) || (dedicaded==undefined && this.config.timer == undefined)) {
-        console.log(components.length + ' timers');
+        //console.log(components.length + ' timers');
         components.forEach(c => {
           let now = new Date();
           let lastExec = c.specificData.last == undefined ? undefined : new Date(c.specificData.last);
           if (c.specificData.interval != undefined) {
             let interval = c.specificData.interval;
-            console.log(now - (interval * 1000 * 60), lastExec);
+            //console.log(now - (interval * 1000 * 60), lastExec);
             if (lastExec == undefined || (interval != undefined && now - (interval * 1000 * 60) >= lastExec)) {
 
               c.specificData.last = now;
-              //console.log(c);
+              ////console.log(c);
               this.componentLib.update(c);
 
               if (dedicaded && this.config.timer != undefined) {
@@ -44,7 +44,7 @@ module.exports = {
                 });
 
                 const parsedUrl = this.url.parse(this.config.timer.target);
-                console.log('GET',parsedUrl);
+                //console.log('GET',parsedUrl);
                 this.http.get({
                   host: parsedUrl.hostname,
                   port: parsedUrl.port,
@@ -58,7 +58,7 @@ module.exports = {
 
                   }
                   res.on('end', () => {
-                    console.log('END Timer Work');
+                    //console.log('END Timer Work');
                   });
                 }.bind(this)).on('error', (e) => {
                   console.error('timer work request fail', e);
@@ -68,7 +68,7 @@ module.exports = {
               } else if (dedicaded==undefined && this.config.timer == undefined) {
                 let engine = require('../../webServices/recursivPullResolvePromise');
                 engine.getNewInstance().resolveComponent(c, 'work').then(() => {
-                  console.log('timer done');
+                  //console.log('timer done');
                 })
               }
             }
@@ -81,19 +81,19 @@ module.exports = {
 
       // this.httpGet.makeRequest('GET', workUrl,undefined,{headers:{"Authorization": "JTW" + " " + token}}).then(result => {
       // }).then(function(data) {
-      //   console.log("IN WORKSPACE COMPONENT RETURN DATA |", data)
+      //   //console.log("IN WORKSPACE COMPONENT RETURN DATA |", data)
       //   //res.json(data.data);
       // }).catch(e => {
-      //   console.log('Timer Service Run Error', e);
+      //   //console.log('Timer Service Run Error', e);
       //   //next(e);
       // });
 
       //var recursivPullResolvePromiseDynamic = require('./webServices/recursivPullResolvePromise');
       // recursivPullResolvePromiseDynamic.getNewInstance().resolveComponent(c, 'work').then(function(data) {
-      //   console.log("IN WORKSPACE COMPONENT RETURN DATA |", data)
+      //   //console.log("IN WORKSPACE COMPONENT RETURN DATA |", data)
       //   //res.json(data.data);
       // }).catch(e => {
-      //   console.log('Timer Service Run Error', e.displayMessage);
+      //   //console.log('Timer Service Run Error', e.displayMessage);
       //   //next(e);
       // });
 
