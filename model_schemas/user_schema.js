@@ -45,6 +45,21 @@ var UserSchema = mongoose.Schema({
             default: 1
         }
     },
+    active: {
+        type: Boolean,
+        default: false
+    },
+    mailid : {
+        type: Number,
+    },
+    resetpasswordtoken :{
+        type: Number,
+        default: null
+    },
+    resetpasswordmdp :{
+        type: Number,
+        default: null
+    },
     job:{
          type: String,
     },
