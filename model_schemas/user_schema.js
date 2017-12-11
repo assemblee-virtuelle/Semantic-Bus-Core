@@ -88,6 +88,10 @@ var UserSchema = mongoose.Schema({
     googleId: {
         type: String,
         default: null
+    },
+    credit: {
+        type: Number,
+        default: 2000
     }
 });
 
