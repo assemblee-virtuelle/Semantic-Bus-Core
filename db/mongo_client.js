@@ -13,6 +13,13 @@ mongoose.connect(conStr);
 
 var db = mongoose.connection;
 
+var __setOptions = mongoose.Query.prototype.setOptions;
+
+mongoose.Query.prototype.setOptions = function(options, overwrite) {
+  __setOptions.apply(this, arguments);
+  if (this.options.lean == null) this.options.lean = true;
+  return this;
+};
 // CONNECTION EVENTS
 // When successfully connected
 mongoose.connection.on('connected', function () {
