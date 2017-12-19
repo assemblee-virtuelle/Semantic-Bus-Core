@@ -17,6 +17,7 @@ var __setOptions = mongoose.Query.prototype.setOptions;
 
 mongoose.Query.prototype.setOptions = function(options, overwrite) {
   __setOptions.apply(this, arguments);
+  //console.log(this.options);
   if (this.options.lean == null) this.options.lean = true;
   return this;
 };
