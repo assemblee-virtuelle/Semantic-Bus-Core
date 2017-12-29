@@ -69,8 +69,16 @@ var UserSchema = mongoose.Schema({
     name: {
         type: String,
     },
+    // workspaces: [{
+    //     _id: String,
+    //     role: String,
+    // }],
     workspaces: [{
-        _id: String,
+        _id: {
+          ref: 'workspace',
+          type: mongoose.Schema.Types.ObjectId,
+          alias: 'workspace'
+        },
         role: String,
     }],
     admin: {
