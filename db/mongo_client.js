@@ -4,7 +4,8 @@ var config2 = require('../../../configuration.js');
 // --------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------
 
-var mongoose = require('mongoose');
+var mongoose = require('mongoose',{useMongoClient: true});
+mongoose.Promise = Promise;  
 
 var conStr = config2.mlabDB;
 ////console.log('config | ',config2);
@@ -13,13 +14,14 @@ mongoose.connect(conStr);
 
 var db = mongoose.connection;
 
-var __setOptions = mongoose.Query.prototype.setOptions;
+//var __setOptions = mongoose.Query.prototype.setOptions;
 
-mongoose.Query.prototype.setOptions = function(options, overwrite) {
-  __setOptions.apply(this, arguments);
-  if (this.options.lean == null) this.options.lean = true;
-  return this;
-};
+// mongoose.Query.prototype.setOptions = function(options, overwrite) {
+//   __setOptions.apply(this, arguments);
+//   //console.log(this.options);
+//   if (this.options.lean == null) this.options.lean = true;
+//   return this;
+// };
 // CONNECTION EVENTS
 // When successfully connected
 mongoose.connection.on('connected', function () {

@@ -50,11 +50,22 @@ var UserSchema = mongoose.Schema({
     name: {
         type: String,
     },
+<<<<<<< HEAD
     stripeID: {
         type: String,
     },
+=======
+    // workspaces: [{
+    //     _id: String,
+    //     role: String,
+    // }],
+>>>>>>> ec677dad4d9d5c31f149eb67de0b3bf95a16a430
     workspaces: [{
-        _id: String,
+        _id: {
+          ref: 'workspace',
+          type: mongoose.Schema.Types.ObjectId,
+          alias: 'workspace'
+        },
         role: String,
     }],
     admin: {

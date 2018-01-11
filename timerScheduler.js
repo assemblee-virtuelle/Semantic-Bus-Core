@@ -7,7 +7,6 @@ module.exports = {
   url: require('url'),
   config: require('../../configuration.js'),
   runTimers: function(dedicaded) {
-
     this.componentLib.get_all({
       module: 'timer'
     }).then(components => {
