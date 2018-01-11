@@ -26,25 +26,6 @@ var UserSchema = mongoose.Schema({
             type: String,
         }
     },
-    payment_details: {
-        mangopay_details: {
-            banks: [{
-                bank_id: String
-            }],
-            cards: [{
-                card_id: String,
-                card_uid: String,
-                crypted_number: String,
-                expiration_date: String
-            }],
-            user_id: String,
-            wallet_id: String
-        },
-        flat_rate: {
-            type: Number,
-            default: 1
-        }
-    },
     active: {
         type: Boolean,
         default: false
@@ -67,6 +48,9 @@ var UserSchema = mongoose.Schema({
          type: String,
     },
     name: {
+        type: String,
+    },
+    stripeID: {
         type: String,
     },
     workspaces: [{
