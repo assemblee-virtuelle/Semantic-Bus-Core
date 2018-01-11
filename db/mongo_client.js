@@ -5,6 +5,7 @@ var config2 = require('../../../configuration.js');
 // --------------------------------------------------------------------------------
 
 var mongoose = require('mongoose',{useMongoClient: true});
+mongoose.Promise = Promise;  
 
 var conStr = config2.mlabDB;
 ////console.log('config | ',config2);
