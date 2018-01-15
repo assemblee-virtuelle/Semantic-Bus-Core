@@ -7,7 +7,7 @@ module.exports = {
   url: require('url'),
   config: require('../../configuration.js'),
   runTimers: function(dedicaded) {
-    this.componentLib.get_all({
+    this.componentLib.get_all_withConsomation({
       module: 'timer'
     }).then(components => {
 
