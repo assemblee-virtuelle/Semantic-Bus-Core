@@ -79,7 +79,15 @@ var UserSchema = mongoose.Schema({
     },
     credit: {
         type: Number,
-        default: 2000
+        default: 100
+    },
+    discount: {
+        type: Number,
+        default: 0.20
+    },
+    secret_stripe: {
+        type: String,
+        default: null
     }
 });
 
