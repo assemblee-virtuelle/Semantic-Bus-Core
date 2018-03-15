@@ -5,14 +5,15 @@ var config2 = require('../../../configuration.js');
 // --------------------------------------------------------------------------------
 
 var mongoose = require('mongoose',{useMongoClient: true});
-mongoose.Promise = Promise;  
+mongoose.Promise = Promise;
 
 var conStr = config2.mlabDB;
 ////console.log('config | ',config2);
 
 mongoose.connect(conStr);
 
-var db = mongoose.connection;
+//var db = mongoose.connection;
+var db = mongoose.createConnection(conStr,{ useMongoClient: true })
 
 //var __setOptions = mongoose.Query.prototype.setOptions;
 
@@ -24,18 +25,18 @@ var db = mongoose.connection;
 // };
 // CONNECTION EVENTS
 // When successfully connected
-mongoose.connection.on('connected', function () {
-  //console.log('Mongoose default connection open to ' + conStr);
+db.on('connected', function () {
+  console.log('Mongoose default connection open to ' + conStr);
 });
 
 // If the connection throws an error
-mongoose.connection.on('error',function (err) {
-  //console.log('Mongoose default connection error: ' + err);
+db.on('error',function (err) {
+  console.log('Mongoose default connection error: ' + err);
 });
 
 // When the connection is disconnected
-mongoose.connection.on('disconnected', function () {
+db.on('disconnected', function () {
   //console.log('Mongoose default connection disconnected');
 });
 
-module.exports = mongoose;
+module.exports = db;
