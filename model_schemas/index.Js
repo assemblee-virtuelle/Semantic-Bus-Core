@@ -8,7 +8,9 @@ var transaction  = require('./transaction_schema');
 var mangoPayAuthSchema = require('./mangopay_auth_schema');
 var cacheSchema = require('./cache_schema');
 var errorSchema = require('./error_schema');
-var historiqueSchema = require('./historique_shema');
+var historiqueStartSchema = require('./historiqueStart_schema');
+var historiqueEndSchema = require('./historiqueEnd_schema');
+var processSchema = require('./process_schema');
 
 
 
@@ -25,5 +27,7 @@ module.exports = {
     mangoPayAuthSchema: mangoPayAuthSchema,
     cache: cacheSchema,
     error: errorSchema,
-    historique: historiqueSchema
+    historiqueStart: historiqueStartSchema,
+    historiqueEnd: historiqueEndSchema,
+    process: pocessSchema,
 }
