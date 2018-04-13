@@ -29,7 +29,7 @@ var ProcessSchema = mongoose.Schema({
   },
   callerId: {
     type: String,
-    required: true
+    //required: true
   },
   originComponentId:{
     type: String,

@@ -10,11 +10,10 @@ mongoose.Promise = Promise;
 var conStr = config2.mlabDB;
 ////console.log('config | ',config2);
 
-mongoose.connect(conStr);
+//mongoose.connect(conStr);
 
 //var db = mongoose.connection;
-var db = mongoose.createConnection(conStr,{ useMongoClient: true })
-
+var db = mongoose.createConnection(conStr,{ useMongoClient: true})
 //var __setOptions = mongoose.Query.prototype.setOptions;
 
 // mongoose.Query.prototype.setOptions = function(options, overwrite) {
