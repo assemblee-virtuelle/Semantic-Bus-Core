@@ -69,6 +69,10 @@ var HistoriqueEndSchema = mongoose.Schema({
     roundDate: {
       type: String,
       required: true
+    },
+    workflowId: {
+      type: String,
+      required: true    
     }
 
 });
