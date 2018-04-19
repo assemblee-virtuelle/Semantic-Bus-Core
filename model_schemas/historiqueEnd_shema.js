@@ -33,6 +33,42 @@ var HistoriqueEndSchema = mongoose.Schema({
     data:{
         type: Object,
         //required: true
+    },
+    error:{
+        type: Object,
+        //required: true
+    },
+    moPrice: {
+      type: Number
+    },
+    componentPrice: {
+      type: Number,
+    },
+    componentModule: {
+      type: String,
+    },
+    moCount: {
+      type: Number
+    },
+    startTime: {
+      type: Date,
+    },
+    recordCount: {
+      type: Number,
+      default: 0,
+      required: true
+    },
+    totalPrice: {
+      type: Number,
+      required: true
+    },
+    recordPrice: {
+      type: Number,
+      required: true
+    },
+    roundDate: {
+      type: String,
+      required: true
     }
 
 });

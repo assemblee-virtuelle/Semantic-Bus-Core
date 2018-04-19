@@ -20,21 +20,18 @@ var WorkspaceSchema = mongoose.Schema({
     type: Number,
     default: null
   },
-  consumption_history: [{
-    traitement_id: Number,
-    dates: {
-      created_at: Date
-    },
-    flow_size: {
-      type: Number,
-      default: 0
-    },
-    price: Number
+  links: [{
+    source: String,
+    target: String
   }],
   users: [{
     email: String,
     role: String,
-  }]
+  }],
+  limitHistoric:{
+    type: Number,
+    default: 1
+  }
 }, { minimize: false });
 
 

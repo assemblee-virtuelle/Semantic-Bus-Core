@@ -19,10 +19,6 @@ var ProcessSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  roundDate: {
-    type: String,
-    required: true
-  },
   ownerId: {
     type: String,
     required: true
@@ -34,7 +30,10 @@ var ProcessSchema = mongoose.Schema({
   originComponentId:{
     type: String,
     required: true
-  }
+  },
+  steps: [{
+      componentId: String
+  }]
 });
 // --------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------
