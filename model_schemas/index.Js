@@ -11,6 +11,7 @@ var errorSchema = require('./error_schema');
 var historiqueStartSchema = require('./historiqueStart_schema');
 var historiqueEndSchema = require('./historiqueEnd_schema');
 var processSchema = require('./process_schema');
+var fragmentSchema = require('./fragment_schema');
 
 
 
@@ -30,4 +31,5 @@ module.exports = {
     historiqueStart: historiqueStartSchema,
     historiqueEnd: historiqueEndSchema,
     process: pocessSchema,
+    fragment: fragmentSchema
 }

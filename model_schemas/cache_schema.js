@@ -7,7 +7,10 @@ var mongoose = require('mongoose');
 // --------------------------------------------------------------------------------
 
 var CacheSchema = mongoose.Schema({
-  data: Object,
+  frag: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "fragment"
+  },
   date: {
     type: Date,
     default: Date.now
@@ -17,7 +20,10 @@ var CacheSchema = mongoose.Schema({
       type: Date,
       default: Date.now
     },
-    data: Object
+    frag: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "fragment"
+    }
   }],
 });
 

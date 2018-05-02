@@ -30,9 +30,16 @@ var HistoriqueEndSchema = mongoose.Schema({
         type: String,
         //required: true
     },
-    data:{
-        type: Object,
-        //required: true
+    persistProcess :{
+        type : Boolean,
+    },
+    // data:{
+    //     type: Object,
+    //     //required: true
+    // },
+    frag: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "fragment"
     },
     error:{
         type: Object,
@@ -72,7 +79,7 @@ var HistoriqueEndSchema = mongoose.Schema({
     },
     workflowId: {
       type: String,
-      required: true    
+      required: true
     }
 
 });
