@@ -19,7 +19,8 @@ class PromisesExecutor {
     this.context = context;
     this.workFunction = workFunction;
     this.paramArray = paramArray;
-    this.option = option;
+    this.option = option||{};
+    this.option.beamNb=this.option.beamNb||1;
   }
 
   execute() {
@@ -27,7 +28,7 @@ class PromisesExecutor {
       this.initialPromiseResolve = resolve;
       this.initialPromiseReject = reject;
       //console.log("length",this.paramArray.length);
-      for (let i = 0; i < Math.min(10,this.paramArray.length); i++) {
+      for (let i = 0; i < Math.min(this.option.beamNb,this.paramArray.length); i++) {
         //console.log("i",i);
         this.incrementExecute();
       }
@@ -35,7 +36,7 @@ class PromisesExecutor {
   }
   incrementExecute() {
     try {
-      //console.log("incrementResolved",this.incrementResolved);
+      console.log("incrementResolved",this.incrementResolved);
       if (this.incrementResolved == this.paramArray.length) {
         //console.log('END',  this.globalOut);
         //console.log('END');
