@@ -12,9 +12,12 @@ module.exports = function (passport) {
             clientID: config.googleAuth.clientID,
             clientSecret: config.googleAuth.clientSecret,
             callbackURL: config.googleAuth.callbackURL,
+            passReqToCallback:true,
+            proxy: true
         },
-        function (token, refreshToken, profile, done) {
+        function (request,token, refreshToken, profile, done) {
             process.nextTick(function () {
+              //console.log('request',request);
                 UserModel.findOne({
                         'googleId': profile.id
                 }, function (err, user) {

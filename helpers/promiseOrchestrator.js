@@ -2,9 +2,9 @@
 class PromiseOrchestrator {
   constructor() {}
 
-  execute(context, workFunction, paramArray, option) {
+  execute(context, workFunction, paramArray, option, config) {
     //console.log('execute',paramArray);
-    let executor = new PromisesExecutor(context, workFunction, paramArray, option);
+    let executor = new PromisesExecutor(context, workFunction, paramArray, option, config);
     return executor.execute();
   }
 
@@ -12,15 +12,16 @@ class PromiseOrchestrator {
 
 //maxSametimeExecution,intervalBewtwenExecution,workFunction
 class PromisesExecutor {
-  constructor(context, workFunction, paramArray, option) {
+  constructor(context, workFunction, paramArray, option, config) {
     this.increment = 0;
     this.incrementResolved = 0;
     this.globalOut = new Array(paramArray.length);
     this.context = context;
     this.workFunction = workFunction;
     this.paramArray = paramArray;
-    this.option = option||{};
-    this.option.beamNb=this.option.beamNb||1;
+    this.option = option || {};
+    this.option.beamNb = this.option.beamNb || 1;
+    this.config = config;
   }
 
   execute() {
@@ -28,7 +29,7 @@ class PromisesExecutor {
       this.initialPromiseResolve = resolve;
       this.initialPromiseReject = reject;
       //console.log("length",this.paramArray.length);
-      for (let i = 0; i < Math.min(this.option.beamNb,this.paramArray.length); i++) {
+      for (let i = 0; i < Math.min(this.option.beamNb, this.paramArray.length); i++) {
         //console.log("i",i);
         this.incrementExecute();
       }
@@ -36,12 +37,15 @@ class PromisesExecutor {
   }
   incrementExecute() {
     try {
-      console.log("incrementResolved",this.incrementResolved);
+
+      //if (this.config!=undefined&&this.config.quietLog != true) {
+        console.log("incrementResolved", this.incrementResolved);
+      //}
       if (this.incrementResolved == this.paramArray.length) {
         //console.log('END',  this.globalOut);
         //console.log('END');
         this.initialPromiseResolve(this.globalOut);
-      } else if(this.increment < this.paramArray.length){
+      } else if (this.increment < this.paramArray.length) {
         //console.log('new PromiseExecutor',this.increment);
         let promiseExecutor = new PromiseExecutor(this.context, this.workFunction, this.paramArray, this.option, this.increment);
         promiseExecutor.execute().then((currentOut) => {
