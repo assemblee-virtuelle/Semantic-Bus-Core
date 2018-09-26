@@ -35,53 +35,46 @@ class PromisesExecutor {
       }
     });
   }
+
   incrementExecute() {
     try {
 
-      //if (this.config!=undefined&&this.config.quietLog != true) {
-        console.log("incrementResolved", this.incrementResolved);
+      //if (this.config != undefined && this.config.quietLog != true) {
+      //process.stdout.clearLine();
+      //process.stdout.cursorTo(0);
+      //process.stdout.write(this.incrementResolved,'/',this.increment); // end the line
       //}
       if (this.incrementResolved == this.paramArray.length) {
         //console.log('END',  this.globalOut);
-        //console.log('END');
+        //console.log('END
         this.initialPromiseResolve(this.globalOut);
       } else if (this.increment < this.paramArray.length) {
         //console.log('new PromiseExecutor',this.increment);
         let promiseExecutor = new PromiseExecutor(this.context, this.workFunction, this.paramArray, this.option, this.increment);
+        this.increment++;
         promiseExecutor.execute().then((currentOut) => {
           //console.log("currentOut",currentOut);
+          //console.log('Promise Sucess');
           this.globalOut[currentOut.index] = currentOut.value;
           this.incrementResolved++;
-          this.incrementExecute();
+          setTimeout(this.incrementExecute.bind(this),1)
+          //this.incrementExecute();
         }).catch((e) => {
+          //console.log('Promise Error');
           //this.globalOut[currentOut.index]=currentOut.value;
           this.globalOut[currentOut.index] = currentOut.value;
           this.incrementResolved++;
-          this.incrementExecute();
+
+          setTimeout(this.incrementExecute.bind(this),1)
+          //this.incrementExecute();
 
         }).then(() => {
+          //console.log('XX');
           // this.increment++;
           // this.incrementExecute(context,workFunction,paramArray,option);
         });
-        this.increment++;
-        // //console.log('incrementExecute',this.globalOut.length,paramArray.length);
-        // let currentParams=this.paramArray[this.increment];
-        // //console.log('apply',currentParams);
-        // this.workFunction.apply(this.context,currentParams).then((currentOut)=>{
-        //   //console.log('sucess execution',currentOut);
-        //   this.globalOut.push(currentOut);
-        //   this.increment++;
-        //   this.incrementExecute();
-        // }).catch((e)=>{
-        //   // console.log('fail exection');
-        //   this.globalOut.push({'$error':e});
-        //   console.log('Orchestrator Error',e);
-        //   this.increment++;
-        //   this.incrementExecute();
-        // }).then(()=>{
-        //   // this.increment++;
-        //   // this.incrementExecute(context,workFunction,paramArray,option);
-        // })
+
+
       }
     } catch (e) {
       //console.log(e);
@@ -99,7 +92,12 @@ class PromiseExecutor {
     this.option = option;
     this.index = index;
   }
+
   execute() {
+    if (this.config != undefined && this.config.quietLog != true) {
+      console.log("index / length : ", this.index,'/',this.paramArray.length);
+    }
+
     return new Promise((resolve, reject) => {
       let currentParams = this.paramArray[this.index];
       //console.log('apply',currentParams);
@@ -111,11 +109,7 @@ class PromiseExecutor {
             value: currentOut
           });
         }).catch((e) => {
-          // console.log('fail exection');
-          // this.globalOut[this.index] = {
-          //   'error': e
-          // };
-          // resolve();
+
           resolve({
             index: this.index,
             value: {
