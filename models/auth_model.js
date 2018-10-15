@@ -1,6 +1,29 @@
 'use strict';
 ////console.log(__filename);
-var mongoose = require('../db/mongo_client');
-var AuthenticationSchema = require('../model_schemas/auth_schema');
+const MongoClient = require('../db/mongo_client');
+const AuthenticationSchema = require('../model_schemas/auth_schema');
 
-module.exports = mongoose.model('authentication', AuthenticationSchema);
+class AuthenticationModelSingleton {
+  constructor() {
+  }
+
+  static getInstance(){
+    if (this.instance == undefined) {
+      this.instance = new AuthenticationModel();
+    }
+    return this.instance;
+  }
+}
+
+class AuthenticationModel {
+  constructor() {
+    this._model = MongoClient.getInstance().connection.model('authentication', AuthenticationSchema);
+  }
+
+  get model(){
+    return this._model;
+  }
+}
+
+module.exports = AuthenticationModelSingleton;
+//module.exports = mongoClient.getInstance().connection.model('authentication', AuthenticationSchema);
