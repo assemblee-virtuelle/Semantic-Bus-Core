@@ -11,6 +11,7 @@ class WorkSpaceModelSingleton {
   }
 
   static getInstance(){
+    //console.log("singleton this",this);
     if (this.instance == undefined) {
       this.instance = new WorkSpaceModel();
     }
