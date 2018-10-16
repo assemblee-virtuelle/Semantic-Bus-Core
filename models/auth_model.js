@@ -3,6 +3,9 @@
 const MongoClient = require('../db/mongo_client');
 const AuthenticationSchema = require('../model_schemas/auth_schema');
 
+
+/** @type module:mongoose.Model<AuthenticationDocument> */
+
 class AuthenticationModelSingleton {
   constructor() {
   }

@@ -3,7 +3,7 @@
 const MongoClient = require('../db/mongo_client');
 const userSchema = require('../model_schemas/user_schema');
 
-
+/** @type module:mongoose.Model<UserDocument> */
 class UserModelSingleton {
   constructor() {
   }
@@ -28,3 +28,4 @@ class UserModel {
 
 module.exports = UserModelSingleton;
 //module.exports = mongoClient.getInstance().connection.model('User', userSchema);
+
