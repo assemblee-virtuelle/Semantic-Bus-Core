@@ -1,6 +1,29 @@
 'use strict';
 ////console.log(__filename);
-var mongoose = require('../db/mongo_client');
-var errorSchema = require('../model_schemas/error_schema');
+const MongoClient = require('../db/mongo_client');
+const errorSchema = require('../model_schemas/error_schema');
 
-module.exports = mongoose.model('error', errorSchema);
+class ErrorModelSingleton {
+  constructor() {
+  }
+
+  static getInstance(){
+    if (this.instance == undefined) {
+      this.instance = new ErrorModel();
+    }
+    return this.instance;
+  }
+}
+
+class ErrorModel {
+  constructor() {
+    this._model = MongoClient.getInstance().connection.model('error', errorSchema);
+  }
+
+  get model(){
+    return this._model;
+  }
+}
+
+module.exports = ErrorModelSingleton;
+//module.exports = mongoClient.getInstance().connection.model('error', errorSchema);

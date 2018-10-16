@@ -1,7 +1,32 @@
 'use strict';
 ////console.log(__filename);
-var mongoose = require('../db/mongo_client');
-var WorkspaceSchema = require('../model_schemas/workspace_schema');
+const MongoClient = require('../db/mongo_client');
+const WorkspaceSchema = require('../model_schemas/workspace_schema');
 // var WorkspaceSchema = require('../model_schemas/workspace').workspace;
 
-module.exports = mongoose.model('workspace', WorkspaceSchema);
+
+
+class WorkSpaceModelSingleton {
+  constructor() {
+  }
+
+  static getInstance(){
+    if (this.instance == undefined) {
+      this.instance = new WorkSpaceModel();
+    }
+    return this.instance;
+  }
+}
+
+class WorkSpaceModel {
+  constructor() {
+    this._model = MongoClient.getInstance().connection.model('workspace', WorkspaceSchema);
+  }
+
+  get model(){
+    return this._model;
+  }
+}
+
+module.exports = WorkSpaceModelSingleton;
+//module.exports = mongoClient.getInstance().connection.model('workspace', WorkspaceSchema);
